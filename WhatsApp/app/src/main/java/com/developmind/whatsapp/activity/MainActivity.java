@@ -1,8 +1,9 @@
-package com.developmind.whatsapp;
+package com.developmind.whatsapp.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.developmind.whatsapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

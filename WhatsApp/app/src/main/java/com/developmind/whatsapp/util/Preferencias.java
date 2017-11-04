@@ -16,11 +16,7 @@ public class Preferencias {
 
     private SharedPreferences.Editor editor;
 
-    public static final String CHAVE_NOME = "nome";
-
-    public static final String CHAVE_TELEFONE = "telefone";
-
-    public static final String CHAVE_TOKEN = "token";
+    public static final String CHAVE_IDENTIFICADOR = "identificador";
 
     public Preferencias(Context context) {
         this.context = context;
@@ -28,18 +24,13 @@ public class Preferencias {
         editor = preferences.edit();
     }
 
-    public void salvarUsuario(String nome, String telefone, String token) {
-        editor.putString(CHAVE_NOME, nome);
-        editor.putString(CHAVE_TELEFONE, telefone);
-        editor.putString(CHAVE_TOKEN, token);
+    public void salvarDados(String identificador) {
+        editor.putString(CHAVE_IDENTIFICADOR, identificador);
         editor.commit();
     }
 
-    public Map<String, String> getDadosUsuario() {
-        Map<String, String> dadosUsuario = new HashMap<String, String>();
-        dadosUsuario.put(CHAVE_NOME, preferences.getString(CHAVE_NOME, null));
-        dadosUsuario.put(CHAVE_TELEFONE, preferences.getString(CHAVE_NOME, null));
-        dadosUsuario.put(CHAVE_TOKEN, preferences.getString(CHAVE_NOME, null));
-        return dadosUsuario;
+    public String getIdentificador() {
+        return preferences.getString(CHAVE_IDENTIFICADOR, null);
     }
+
 }

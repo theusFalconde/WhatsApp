@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.developmind.whatsapp.R;
 import com.developmind.whatsapp.config.ConfiguracaoFirebase;
 import com.developmind.whatsapp.entity.Usuario;
+import com.developmind.whatsapp.util.Base64Custom;
 import com.developmind.whatsapp.util.Permissao;
 import com.developmind.whatsapp.util.Preferencias;
 import com.developmind.whatsapp.util.Utils;
@@ -76,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    preferencias.salvarDados(Base64Custom.encodeBase64(usuario.getEmail()));
                     abrirTelaPrincipal();
                     finish();
                 } else {

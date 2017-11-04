@@ -1,8 +1,10 @@
 package com.developmind.whatsapp.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 import com.developmind.whatsapp.R;
 import com.developmind.whatsapp.config.ConfiguracaoFirebase;
 import com.developmind.whatsapp.entity.Usuario;
+import com.developmind.whatsapp.util.Base64Custom;
+import com.developmind.whatsapp.util.Preferencias;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -63,10 +67,12 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com Sucesso!", Toast.LENGTH_LONG).show();
-                    usuario.setId(task.getResult().getUser().getUid());
+                    String id = Base64Custom.encodeBase64(usuario.getEmail());
+                    usuario.setId(id);
                     usuario.salvar();
-                    auth.signOut();
-                    finish();
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.salvarDados(id);
+                    abrirLoginUsuario();
                 } else {
                     String erro = "";
                     try {
@@ -85,5 +91,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void abrirLoginUsuario() {
+        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

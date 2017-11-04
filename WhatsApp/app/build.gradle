@@ -29,5 +29,7 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.4.2'
     compile 'com.android.support:design:26.1.0'
     compile 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
 apply plugin: 'com.google.gms.google-services'

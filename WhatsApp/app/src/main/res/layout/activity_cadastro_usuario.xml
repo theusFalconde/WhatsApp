@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.developmind.whatsapp.activity.LoginActivity">
+    tools:context="com.developmind.whatsapp.activity.CadastroUsuarioActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,55 +19,58 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="@dimen/largura_logo"
-            android:layout_height="@dimen/altura_logo"
+            android:layout_width="150dp"
+            android:layout_height="113dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50dp"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/usuario" />
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/editNomeCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/imageView"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="Digite seu e-mail"
-            android:inputType="textWebEmailAddress"
+            android:layout_marginTop="10dp"
+            android:hint="Digite seu nome"
+            android:inputType="text"
             android:textColor="@color/textColorPrimary" />
 
         <EditText
-            android:id="@+id/editSenha"
+            android:id="@+id/editEmailCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/imageView"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Digite seu e-mail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textColorPrimary" />
+
+        <EditText
+            android:id="@+id/editSenhaCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Digite sua senha"
             android:inputType="textPassword"
             android:textColor="@color/textColorPrimary" />
 
         <Button
-            android:id="@+id/btnLogar"
+            android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:onClick="logar"
             android:layout_marginTop="20dp"
-            android:text="@string/botao_logar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/textColorPrimary"
-            android:layout_marginTop="10dp"
-            android:onClick="abrirCadastroUsuario"
-            android:text="Não tem conta? Cadastre-se"/>
+            android:background="@color/colorPrimaryDark"
+            android:onClick="cadastrar"
+            android:text="@string/botao_cadastrar" />
     </LinearLayout>
 </RelativeLayout>

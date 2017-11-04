@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        verificarUsuarioLogado();
     }
 
     public void logar(View v) {
@@ -60,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
         usuario.setEmail(editEmail.getText().toString());
         usuario.setSenha(editSenha.getText().toString());
         validarLogin();
+    }
+
+    private void verificarUsuarioLogado() {
+        auth = ConfiguracaoFirebase.getFirebaseAuth();
+        if (auth.getCurrentUser() != null) {
+            abrirTelaPrincipal();
+        }
     }
 
     private void validarLogin() {
